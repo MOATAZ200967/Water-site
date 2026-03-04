@@ -1,0 +1,179 @@
+/* ===== PAGE HEADER ===== */
+.page-header {
+  position: relative;
+  z-index: 1;
+  padding: 70px 40px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header p {
+  color: var(--gray);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 520px;
+  margin-top: 12px;
+}
+
+/* ===== FILTER TABS ===== */
+.filter-tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 40px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.tab {
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--card-border);
+  color: var(--gray);
+  background: transparent;
+  font-family: 'Cairo', sans-serif;
+  transition: all 0.25s ease;
+}
+
+.tab:hover, .tab.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: rgba(0,191,255,0.08);
+}
+
+/* ===== PHOTOS GRID ===== */
+.photos-section {
+  position: relative;
+  z-index: 1;
+  padding: 0 40px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  aspect-ratio: 4/3;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.photo-item:hover {
+  border-color: rgba(0,191,255,0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.photo-item.featured {
+  grid-column: span 2;
+  aspect-ratio: 16/7;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.photo-item:hover img { transform: scale(1.06); }
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(3,17,43,0.85) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.photo-item:hover .photo-overlay { opacity: 1; }
+
+.photo-caption { color: var(--white); font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+.photo-caption span { display: block; color: var(--cyan); font-size: 0.75rem; margin-bottom: 4px; }
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(10,92,158,0.2), rgba(0,191,255,0.05));
+}
+
+.photo-placeholder .ph-icon  { font-size: 3rem; opacity: 0.5; }
+.photo-placeholder .ph-text  { color: var(--gray); font-size: 0.85rem; text-align: center; padding: 0 16px; }
+.photo-placeholder .ph-label {
+  background: rgba(0,191,255,0.1);
+  border: 1px solid rgba(0,191,255,0.2);
+  color: var(--cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 50px;
+}
+
+/* ===== INFO CARDS ===== */
+.info-section {
+  position: relative;
+  z-index: 1;
+  padding: 0 40px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.info-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.info-card:hover {
+  border-color: rgba(0,191,255,0.3);
+  transform: translateY(-3px);
+}
+
+.info-card .ic-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+.info-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+.info-card p  { color: var(--gray); font-size: 0.82rem; line-height: 1.6; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .page-header, .photos-section, .info-section { padding-right: 20px; padding-left: 20px; }
+  .filter-tabs { padding: 0 20px; }
+  .photos-grid { grid-template-columns: 1fr 1fr; }
+  .photo-item.featured { grid-column: span 2; }
+  .info-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 500px) {
+  .photos-grid { grid-template-columns: 1fr; }
+  .photo-item.featured { grid-column: span 1; aspect-ratio: 4/3; }
+}
